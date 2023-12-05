@@ -1,34 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
-  Button,
+  Alert,
 } from "react-native";
 import imagem1 from "./assets/banana.png";
 import imagem2 from "./assets/maca.png";
 import imagem3 from "./assets/melancia.png";
 import imagem4 from "./assets/uvas.png";
+import Separador from "../components/Separador";
+import ProductInfoModal from "../components/Modal";
 
-export default function Card({ navigation }) {
-  function handleImagePress() {
-    // Navegue para a próxima tela quando a imagem for pressionada
-    navigation.navigate("TelaInicial");
-  }
+export default function Tela6() {
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const product = {
+    nome: `Bananas`,
+    info: `\t Banana, pacoba ou pacova é uma pseudobaga da bananeira, uma planta herbácea vivaz acaule da família Musaceae (género Musa - além do género Ensete, que produz as chamadas "falsas bananas"). São cultivadas em 130 países. Originárias do sudeste da Ásia são atualmente cultivadas em praticamente todas as regiões tropicais do planeta.`,
+  };
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Frutaria Digital</Text>
+
       <View style={styles.row}>
         <View style={styles.column}>
-          <TouchableOpacity onPress={handleImagePress}>
-            <Text style={styles.texto}>Banana</Text>
-          </TouchableOpacity>
+          <Text style={styles.texto}>Banana</Text>
           <Text>100 Kcal</Text>
         </View>
         <View style={styles.column}>
-          <TouchableOpacity onPress={handleImagePress}>
+          <TouchableOpacity onPress={openModal}>
             <Image source={imagem1} style={styles.image} />
           </TouchableOpacity>
         </View>
@@ -40,7 +52,7 @@ export default function Card({ navigation }) {
           <Text>100 Kcal</Text>
         </View>
         <View style={styles.column}>
-          <TouchableOpacity onPress={handleImagePress}>
+          <TouchableOpacity onPress={openModal}>
             <Image source={imagem2} style={styles.image} />
           </TouchableOpacity>
         </View>
@@ -52,7 +64,7 @@ export default function Card({ navigation }) {
           <Text>100 Kcal</Text>
         </View>
         <View style={styles.column}>
-          <TouchableOpacity onPress={handleImagePress}>
+          <TouchableOpacity onPress={openModal}>
             <Image source={imagem3} style={styles.image} />
           </TouchableOpacity>
         </View>
@@ -64,15 +76,30 @@ export default function Card({ navigation }) {
           <Text>100 Kcal</Text>
         </View>
         <View style={styles.column}>
-          <TouchableOpacity onPress={handleImagePress}>
+          <TouchableOpacity onPress={openModal}>
             <Image source={imagem4} style={styles.image} />
           </TouchableOpacity>
         </View>
       </View>
-
-      <Button
-        title="Ir para Tela 1"
-        onPress={() => navigation.navigate("Tela1")}
+      <View style={styles.container2}>
+        <TouchableOpacity
+          style={styles.confirmar}
+          onPress={() => Alert.alert("Você pressionou o botão de Confirmar")}
+        >
+          <Text style={styles.textoBotoes}>CONFIRMAR</Text>
+        </TouchableOpacity>
+        <Separador />
+        <TouchableOpacity
+          style={styles.cancelar}
+          onPress={() => Alert.alert("Você pressionou o botão de Cancelar")}
+        >
+          <Text style={styles.textoBotoes}>CANCELAR</Text>
+        </TouchableOpacity>
+      </View>
+      <ProductInfoModal
+        isVisible={isModalVisible}
+        onClose={closeModal}
+        product={product}
       />
     </View>
   );
@@ -92,9 +119,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
+    borderColor: "#ccc",
     padding: 10,
     margin: 5,
-    backgroundColor: "#d0d0d0",
+    backgroundColor: "#ddd",
   },
   image: {
     width: 100,
@@ -103,11 +131,33 @@ const styles = StyleSheet.create({
   texto: {
     fontSize: 25,
     fontWeight: "bold",
-    color: "#00f",
   },
   title: {
     fontSize: 50,
     fontWeight: "bold",
-    color: "#00f",
+    margin: 20,
+  },
+  container2: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 20,
+  },
+  confirmar: {
+    width: 150,
+    backgroundColor: "green",
+    padding: 10,
+    borderRadius: 5,
+    margin: 5,
+  },
+  cancelar: {
+    width: 150,
+    backgroundColor: "red",
+    padding: 10,
+    borderRadius: 5,
+    margin: 5,
+  },
+  textoBotoes: {
+    color: "white",
+    textAlign: "center",
   },
 });

@@ -13,7 +13,18 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: "#0af",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      >
         <Stack.Screen name="Tela1" component={Tela1} />
         <Stack.Screen name="Tela2" component={Tela2} />
         <Stack.Screen name="Tela3" component={Tela3} />
