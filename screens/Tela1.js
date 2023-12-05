@@ -34,6 +34,11 @@ export default function Tela1({ navigation }) {
         onPress={() => navigation.navigate("Tela5")}
       />
       <Separador />
+      <Button
+        title="Ir para Tela 6"
+        onPress={() => navigation.navigate("Tela6")}
+      />
+      <Separador />
       <View style={styles.container2}>
         <TouchableOpacity
           style={styles.confirmar}
