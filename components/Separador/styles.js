@@ -1,8 +1,4 @@
-import { View, StyleSheet } from "react-native";
-
-export default function Separador() {
-  return <View style={styles.separador} />;
-}
+import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   separador: {
@@ -11,3 +7,5 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
+
+export default styles;

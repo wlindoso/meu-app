@@ -1,19 +1,31 @@
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
-import Separador from "./Separador";
+import { Button, StyleSheet, Text, View } from "react-native";
+import Separador from "../components/Separador";
 
 export default function Tela2({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>Esta é a Tela 2</Text>
       <Separador />
-      <Button title="Ir para Tela 1" onPress={() => navigation.navigate("Tela1")} />
+      <Button
+        title="Ir para Tela 1"
+        onPress={() => navigation.navigate("Tela1")}
+      />
       <Separador />
-      <Button title="Ir para Tela 3" onPress={() => navigation.navigate("Tela3")} />
+      <Button
+        title="Ir para Tela 3"
+        onPress={() => navigation.navigate("Tela3")}
+      />
       <Separador />
-      <Button title="Ir para Tela 4" onPress={() => navigation.navigate("Tela4")} />
+      <Button
+        title="Ir para Tela 4"
+        onPress={() => navigation.navigate("Tela4")}
+      />
       <Separador />
-      <Button title="Ir para Tela 5" onPress={() => navigation.navigate("Tela5")} />
+      <Button
+        title="Ir para Tela 5"
+        onPress={() => navigation.navigate("Tela5")}
+      />
     </View>
   );
 }
